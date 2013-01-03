@@ -2,7 +2,6 @@
 // First entry of One Game A Month challenge.
 
 #include <stdio.h>
-
 #include <stdbool.h>
 
 void intro() {
