@@ -2,7 +2,14 @@
 // First entry of One Game A Month challenge.
 
 #include <stdio.h>
+#ifndef STDBOOL_H
+#define STDBOOL_H
 #include <stdbool.h>
+#endif
+
+#include "outputFlagContainer.h"
+
+#define MAX_INPUT 64
 
 void intro() {
 	puts("\n---------------\n| THE MESSAGE |\n---------------");
@@ -23,9 +30,17 @@ void game() {
 
 void run() {
 	intro();
+
+	char user_input[MAX_INPUT]; // shit, bad practice!
+	char *userInput = NULL;     // what will I do? (later)
+
 	while(true) {
-		puts("Please choose an option:\n 1) Play The Message     2) Quit");
-		// get user input
+		puts("Would you like to play or quit? (Choose one.)");
+		userInput = fgets(user_input, MAX_INPUT-1, stdin);
+		// what's the best way to parse this, really?
+		// current thought:
+		// fscanf(,s,) while uI != done
+		// 		look for 
 
 		// if play: enter main loop
 		game();
