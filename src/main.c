@@ -48,6 +48,8 @@ void run() {
 
 			// knowing how this works now, my initial thought is loop to create a string that could scan up to, say, 20 words, stopping as soon as a blank occurred.
 			// already seeing where even some C++ would be handy.
+			// well, I'm sufficiently convinced I *could* code a brute force method – to the Internet!
+			// And naturally, there is an easier way (phew); check the bookmark for the Stack Overflow question on Tokenizing strings in C.
 
 			puts(floyd);
 			i++;
