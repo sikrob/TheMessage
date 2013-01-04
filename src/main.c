@@ -2,12 +2,13 @@
 // First entry of One Game A Month challenge.
 
 #include <stdio.h>
+#include <stdlib.h>
 #ifndef STDBOOL_H
 #define STDBOOL_H
 #include <stdbool.h>
 #endif
 
-#include "outputFlagContainer.h"
+#include "outputFlagContainer.h"~
 
 #define MAX_INPUT 64
 
@@ -31,22 +32,39 @@ void game() {
 void run() {
 	intro();
 
-	char user_input[MAX_INPUT]; // shit, bad practice!
+	char user_input[MAX_INPUT]; // shit, bad practice in the naming convention…
 	char *userInput = NULL;     // what will I do? (later)
 
+	outputFlagContainer *outputFlags = malloc(sizeof(outputFlagContainer)); // is this necessary with only ints in the struct? I do not remember manual memory management!
 	while(true) {
 		puts("Would you like to play or quit? (Choose one.)");
 		userInput = fgets(user_input, MAX_INPUT-1, stdin);
+
+		int i = 0;
+		while (i < 3) {
+			char FLOYD[MAX_INPUT];
+			char *floyd = FLOYD;
+			int cad = sscanf(userInput, "%*s %*s %*s %*s %s ", floyd);
+
+			// knowing how this works now, my initial thought is loop to create a string that could scan up to, say, 20 words, stopping as soon as a blank occurred.
+			// already seeing where even some C++ would be handy.
+
+			puts(floyd);
+			i++;
+		}
 		// what's the best way to parse this, really?
 		// current thought:
 		// fscanf(,s,) while uI != done
 		// 		look for 
+
 
 		// if play: enter main loop
 		game();
 		// if quit: break
 		break;
 	}
+
+	free(outputFlags);
 }
 
 

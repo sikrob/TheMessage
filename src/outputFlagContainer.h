@@ -13,7 +13,7 @@
 #ifndef OUTPUTFLAGCONTAINER_H
 #define OUTPUTFLAGCONTAINER_H
 
-typedef struct outputFlagContainer{
+typedef struct {
 	// Required for pre-game:
 	bool yes;
 	bool no;
