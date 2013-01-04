@@ -3,6 +3,8 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
+
 #ifndef STDBOOL_H
 #define STDBOOL_H
 #include <stdbool.h>
@@ -34,31 +36,21 @@ void run() {
 
 	char user_input[MAX_INPUT]; // shit, bad practice in the naming convention…
 	char *userInput = NULL;     // what will I do? (later)
+	char *userInputToken = NULL;
 
 	outputFlagContainer *outputFlags = malloc(sizeof(outputFlagContainer)); // is this necessary with only ints in the struct? I do not remember manual memory management!
 	while(true) {
 		puts("Would you like to play or quit? (Choose one.)");
 		userInput = fgets(user_input, MAX_INPUT-1, stdin);
 
-		int i = 0;
-		while (i < 3) {
-			char FLOYD[MAX_INPUT];
-			char *floyd = FLOYD;
-			int cad = sscanf(userInput, "%*s %*s %*s %*s %s ", floyd);
+		// This next bit should be popped out into a function, probably into its own file for maximum benefit. Could possibly also pull the output flags? Might be tricky to do
+		// here. 
 
-			// knowing how this works now, my initial thought is loop to create a string that could scan up to, say, 20 words, stopping as soon as a blank occurred.
-			// already seeing where even some C++ would be handy.
-			// well, I'm sufficiently convinced I *could* code a brute force method – to the Internet!
-			// And naturally, there is an easier way (phew); check the bookmark for the Stack Overflow question on Tokenizing strings in C.
-
-			puts(floyd);
-			i++;
+		// destructively pull tokens, one at a time.
+		userInputToken = strtok(userInput, " ");
+		while (userInputToken != NULL) {
+			// handle token
 		}
-		// what's the best way to parse this, really?
-		// current thought:
-		// fscanf(,s,) while uI != done
-		// 		look for 
-
 
 		// if play: enter main loop
 		game();
