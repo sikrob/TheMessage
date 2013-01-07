@@ -31,26 +31,45 @@ void game() {
 	}
 }
 
+void getUserInput(char *userInput) {
+	char user_input[MAX_INPUT]; // shit, bad practice in the naming convention…
+	char *userInputToken = NULL;
+
+	//char yes[] = "yes\n";
+	char yes[] = "yes";
+
+	userInput = fgets(user_input, MAX_INPUT-1, stdin);
+	userInputToken = strtok(userInput, " "); // Destructive, pulls one token at a time.
+	// fgets provides newline characters, which fuck everything up forever.
+
+	// to do this:
+	// int mooch = strchr(userInputToken, '\n');
+	// if (mooch != NULL) {
+	//	strip the newline that occurs at mooch; possibly by copying the uIT as uIT w/ len-1.
+	//}
+
+	while (userInputToken != NULL) { // NULL = no (more) tokens.
+		// handle token
+		if (0 == strcmp(userInputToken, yes)) {
+			puts("bear");
+		}
+
+		userInputToken = strtok(NULL, " "); // Destructive, pulls one token at a time.
+	}
+	// is there a way to make sure we delete the array?
+}
+
 void run() {
 	intro();
 
-	char user_input[MAX_INPUT]; // shit, bad practice in the naming convention…
 	char *userInput = NULL;     // what will I do? (later)
-	char *userInputToken = NULL;
 
 	outputFlagContainer *outputFlags = malloc(sizeof(outputFlagContainer)); // is this necessary with only ints in the struct? I do not remember manual memory management!
+	// in more reading, I'm 90% certain we do not need malloc for this since ints; malloc is for dynamic stuff and I'm not convinced structs are dynamic intrinsically.
+
 	while(true) {
 		puts("Would you like to play or quit? (Choose one.)");
-		userInput = fgets(user_input, MAX_INPUT-1, stdin);
-
-		// This next bit should be popped out into a function, probably into its own file for maximum benefit. Could possibly also pull the output flags? Might be tricky to do
-		// here. 
-
-		// destructively pull tokens, one at a time.
-		userInputToken = strtok(userInput, " ");
-		while (userInputToken != NULL) {
-			// handle token
-		}
+		getUserInput(userInput); // are we going to pass in an outputFlagContainer by reference or just return one? If byRef, we could also do a return value… but to what end?
 
 		// if play: enter main loop
 		game();
