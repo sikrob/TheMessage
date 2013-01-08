@@ -35,18 +35,20 @@ void getUserInput(char *userInput) {
 	char user_input[MAX_INPUT]; // shit, bad practice in the naming convention…
 	char *userInputToken = NULL;
 
-	//char yes[] = "yes\n";
+	// Tokens to search for:
 	char yes[] = "yes";
 
 	userInput = fgets(user_input, MAX_INPUT-1, stdin);
 	userInputToken = strtok(userInput, " "); // Destructive, pulls one token at a time.
 	// fgets provides newline characters, which fuck everything up forever.
 
-	// to do this:
-	// int mooch = strchr(userInputToken, '\n');
-	// if (mooch != NULL) {
-	//	strip the newline that occurs at mooch; possibly by copying the uIT as uIT w/ len-1.
-	//}
+	char tmp[strlen(userInputToken)]; // ideally reduce scope on this later !!!!!!!!!!!!!!!!!!!!
+
+	char *newLineCheck = strchr(userInputToken, '\n');
+	if (newLineCheck) {
+		strncpy(tmp,userInputToken,strlen(userInputToken)-1); // Removing that pesky newline.
+		userInputToken = tmp;
+	}
 
 	while (userInputToken != NULL) { // NULL = no (more) tokens.
 		// handle token
