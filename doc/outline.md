@@ -9,8 +9,13 @@ Basic Idea:
 		RESPOND_TO(USERINPUT) // display results, including any new "setting" information.
 	}
 
-Game Plot: You are an investigative something or other and you are trying to find out the
-scoop on someone. You can look through trash, break into house (or enter back door),
-and possibly even call someone else to confer details? Twist ending of being the perp, not the cop? (too 9:05…)
+####Plot:
+Similar to 9:05, we want to present the player with a situation which will
+make them do one thing on instinct – but, if they look around, it will be
+obvious that the first possibility is incorrect.
 
-End is either getting attacked by who you are investigating or making the call on what's going on?
+The set up will be such that the player will think they are being threatened
+in their home. They may grab a weapon from their room before going downstairs
+and killing the invaders – only to learn that it was their surprise birthday
+party, and they just killed one of the guests (who was holding a piñata bat)
+and also that the player character is something like twelve years old.
