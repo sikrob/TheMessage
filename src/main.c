@@ -57,7 +57,7 @@ void run() {
 			// if quit: break
 			break;
 		} else {
-			puts("I'm sorry, I didn't recoginze your input – would you like to play (yes) or quit (quit)?"); // fix so we recog play later	
+			puts("I'm sorry, I didn't recoginze your input – would you like to play (yes) or quit (quit)?"); // fix so we recog play later
 		}
 	}
 
