@@ -1,18 +1,24 @@
 // TheMessage
 // First entry of One Game A Month challenge.
-
+#ifndef STDIO_H
+#define STDIO_H
 #include <stdio.h>
+#endif
+#ifndef STDLIB_H
+#define STDLIB_H
 #include <stdlib.h>
-#include <string.h>
-
+#endif
 #ifndef STDBOOL_H
 #define STDBOOL_H
 #include <stdbool.h>
 #endif
 
-#include "outputFlagContainer.h"~
+#include "outputFlagContainer.h"
+#include "messageParserPieces.h"
 
+#ifndef MAX_INPUT
 #define MAX_INPUT 64
+#endif
 
 void intro() {
 	puts("\n---------------\n| THE MESSAGE |\n---------------");
@@ -26,57 +32,33 @@ void intro() {
 
 void game() {
 	while(true) {
-		//
+		puts("entered the game loop");
 		break;
 	}
-}
-
-void getUserInput(char *userInput) {
-	char user_input[MAX_INPUT]; // shit, bad practice in the naming convention…
-	char *userInputToken = NULL;
-
-	// Tokens to search for:
-	char yes[] = "yes";
-
-	userInput = fgets(user_input, MAX_INPUT-1, stdin);
-	userInputToken = strtok(userInput, " "); // Destructive, pulls one token at a time.
-	// fgets provides newline characters, which fuck everything up forever.
-
-	char tmp[strlen(userInputToken)]; // ideally reduce scope on this later !!!!!!!!!!!!!!!!!!!!
-
-	char *newLineCheck = strchr(userInputToken, '\n');
-	if (newLineCheck) {
-		strncpy(tmp,userInputToken,strlen(userInputToken)-1); // Removing that pesky newline.
-		userInputToken = tmp;
-	}
-
-	while (userInputToken != NULL) { // NULL = no (more) tokens.
-		// handle token
-		if (0 == strcmp(userInputToken, yes)) {
-			puts("bear");
-		}
-
-		userInputToken = strtok(NULL, " "); // Destructive, pulls one token at a time.
-	}
-	// is there a way to make sure we delete the array?
 }
 
 void run() {
 	intro();
 
-	char *userInput = NULL;     // what will I do? (later)
+	char *userInput = NULL;
 
-	outputFlagContainer *outputFlags = malloc(sizeof(outputFlagContainer)); // is this necessary with only ints in the struct? I do not remember manual memory management!
+	outputFlagContainer *outputFlags; // is this necessary with only ints in the struct? I do not remember manual memory management!
 	// in more reading, I'm 90% certain we do not need malloc for this since ints; malloc is for dynamic stuff and I'm not convinced structs are dynamic intrinsically.
+	// but we're keeping it for now so we don't have to worry about it.
 
 	while(true) {
 		puts("Would you like to play or quit? (Choose one.)");
-		getUserInput(userInput); // are we going to pass in an outputFlagContainer by reference or just return one? If byRef, we could also do a return value… but to what end?
+		outputFlags = getUserInput(userInput); // are we going to pass in an outputFlagContainer by reference or just return one? If byRef, we could also do a return value… but to what end?
 
-		// if play: enter main loop
-		game();
-		// if quit: break
-		break;
+		if (outputFlags->yes) {
+			game();
+		} else if (outputFlags->quit) {
+			puts("recog'd quit");
+			// if quit: break
+			break;
+		} else {
+			puts("I'm sorry, I didn't recoginze your input – would you like to play (yes) or quit (quit)?"); // fix so we recog play later	
+		}
 	}
 
 	free(outputFlags);
