@@ -15,30 +15,15 @@
 
 #include "outputFlagContainer.h"
 #include "messageParserPieces.h"
+#include "gameloop.h"
+#include "messages.h"
 
 #ifndef MAX_INPUT
 #define MAX_INPUT 64
 #endif
 
-void intro() {
-	puts("\n---------------\n| THE MESSAGE |\n---------------");
-	puts("An interactive fiction game by Robert Sikorski.");
-	puts("This work is free, open source, and may only be used, redistributed, or modified on condition of the same");
-	puts("being true for the end result.");
-
-	puts("\nWelcome to The Message\n\"The Message\" is a short text adventure game with a rudimentary parser.");
-	puts("Simple command entries are the basis here, with all options explained in the 'help' action.\n");
-}
-
-void game() {
-	while(true) {
-		puts("entered the game loop");
-		break;
-	}
-}
-
 void run() {
-	intro();
+	displayIntroMessage();
 
 	char *userInput = NULL;
 
@@ -51,7 +36,7 @@ void run() {
 		outputFlags = getUserInput(userInput); // are we going to pass in an outputFlagContainer by reference or just return one? If byRef, we could also do a return value… but to what end?
 
 		if (outputFlags->yes) {
-			game();
+			gameloop();
 		} else if (outputFlags->quit) {
 			puts("recog'd quit");
 			// if quit: break
