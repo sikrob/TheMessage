@@ -15,26 +15,24 @@
 
 typedef struct {
 
-	bool help;
-	bool quit;
+	bool HELP;
+	bool QUIT;
 
 	// Required for pre-game:
-	bool yes;
-	bool no; // do we need no? could an absense of yes suffice in y/n situations?
-	bool not;
-	bool play;
+	bool YES;
+	bool NO;
+	bool PLAY;
 
 
 } outputFlagContainer;
 
 outputFlagContainer* resetOutputFlags(outputFlagContainer* outputFlags) {
 	// free and malloc?
-	outputFlags->help = false;
-	outputFlags->quit = false;
-	outputFlags->yes = false;
-	outputFlags->no = false;
-	outputFlags->not = false;
-	outputFlags->play = false;
+	outputFlags->HELP = false;
+	outputFlags->QUIT = false;
+	outputFlags->YES = false;
+	outputFlags->NO = false;
+	outputFlags->PLAY = false;
 
 	return outputFlags;
 }

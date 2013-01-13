@@ -16,6 +16,11 @@
 #include <stdbool.h>
 #endif
 
+#ifndef CTYPE_H
+#define CTYPE_H
+#include <ctype.h>
+#endif
+
 #ifndef MAX_INPUT
 #define MAX_INPUT 64
 #endif
@@ -27,7 +32,7 @@
 
 
 outputFlagContainer* getUserInput(char *userInput) {
-	char user_input[MAX_INPUT]; // shit, bad practice in the naming convention…
+	char user_input[MAX_INPUT];
 	char *userInputToken = NULL;
 	char *tmp = NULL;
 	char *finalCharacterCheck = NULL;
@@ -36,16 +41,19 @@ outputFlagContainer* getUserInput(char *userInput) {
 	outputFlags = resetOutputFlags(outputFlags);
 
 	// Tokens to search for:
-	char help[] = "help";
-	char quit[] = "quit";
+	char HELP[] = "HELP";
+	char QUIT[] = "QUIT";
 
-	char yes[] = "yes";
-	char no[] = "no";
-	char not[] = "not";
-	char play[] = "play";
-
+	char YES[] = "YES";
+	char NO[] = "NO";
+	char PLAY[] = "PLAY";
 
 	userInput = fgets(user_input, MAX_INPUT-1, stdin);
+	int i = 0;
+	while(userInput[i]) {
+		userInput[i] = toupper(userInput[i]);
+		i++;
+	}
 
 	userInputToken = strtok(userInput, " ");
 	if (userInputToken) {
@@ -64,12 +72,19 @@ outputFlagContainer* getUserInput(char *userInput) {
 		}
 	}
 
-	while (userInputToken != NULL) { // NULL = no (more) tokens.
-		if (0 == strcmp(userInputToken, yes)) {
-			outputFlags->yes = true;
-		} else if (0 == strcmp(userInputToken, quit)) {
-			outputFlags->quit = true;
+	while (userInputToken != NULL) { // NULL = NO (more) tokens.
+		if (0 == strcmp(userInputToken, YES)) {
+			outputFlags->YES = true;
+		} else if (0 == strcmp(userInputToken, QUIT)) {
+			outputFlags->QUIT = true;
+		} else if (0 == strcmp(userInputToken, HELP)) {
+			outputFlags->HELP = true;
+		} else if (0 == strcmp(userInputToken, PLAY)) {
+			outputFlags->PLAY = true;
+		} else if (0 == strcmp(userInputToken, NO)) {
+			outputFlags->NO = true;
 		}
+
 		userInputToken = strtok(NULL, " ");
 		if (userInputToken) {
 			finalCharacterCheck = strchr(userInputToken, '\n');
