@@ -18,4 +18,21 @@ void displayIntroMessage() {
 	puts("Simple command entries are the basis here, with all options explained in the 'help' action.\n");
 }
 
+void displayQuitMessage() {
+	puts("Thanks for playing The Message.");
+}
+
+void displayBadInputMessage() {
+	puts("I'm sorry, I didn't recognize your input; please try again.");
+}
+
+void displayHelpMessage() {
+	puts("\nCommon commands in this game include: yes, no, play, quit, go [destination]");
+	puts("Tips: go [destination] could be something like \"go door\"\n");
+}
+
+void displayPreGameMenu() {
+	puts("Would you like to play or quit? Please choose one.");
+}
+
 #endif

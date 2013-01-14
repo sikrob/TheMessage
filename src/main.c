@@ -30,26 +30,24 @@
 void run() {
 	displayIntroMessage();
 
-	char *userInput = NULL;
-
-	outputFlagContainer *outputFlags; // is this necessary with only ints in the struct? I do not remember manual memory management!
-	// in more reading, I'm 90% certain we do not need malloc for this since ints; malloc is for dynamic stuff and I'm not convinced structs are dynamic intrinsically.
-	// but we're keeping it for now so we don't have to worry about it.
+	// have some serious memory management questions re:outputFlagContainer…
+	outputFlagContainer *outputFlags;
 
 	while(true) {
-		puts("Would you like to play or quit? (Choose one.)");
-		outputFlags = getUserInput(userInput); // are we going to pass in an outputFlagContainer by reference or just return one? If byRef, we could also do a return value… but to what end?
+		displayPreGameMenu();
+
+		outputFlags = getUserInput(); // are we going to pass in an outputFlagContainer by reference or just return one? If byRef, we could also do a return value… but to what end?
 
 		if (outputFlags->HELP) {
-			// play help message.
+			displayHelpMessage();
 		}
 		else if (outputFlags->YES || outputFlags->PLAY) {
 			gameloop();
 		} else if (outputFlags->QUIT || outputFlags->NO) {
-			puts("recog'd quit");
+			displayQuitMessage();
 			break;
 		} else {
-			puts("I'm sorry, I didn't recoginze your input – would you like to play (yes) or quit (quit)?"); // fix so we recog play later
+			displayBadInputMessage();
 		}
 	}
 

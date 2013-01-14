@@ -31,7 +31,8 @@
 #define MESSAGEPARSERPIECES_H
 
 
-outputFlagContainer* getUserInput(char *userInput) {
+outputFlagContainer* getUserInput() {
+	char *userInput = NULL;
 	char user_input[MAX_INPUT];
 	char *userInputToken = NULL;
 	char *tmp = NULL;
