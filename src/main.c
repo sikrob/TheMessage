@@ -36,7 +36,7 @@ void run() {
 	while(true) {
 		displayPreGameMenu();
 
-		outputFlags = getUserInput(); // are we going to pass in an outputFlagContainer by reference or just return one? If byRef, we could also do a return value… but to what end?
+		outputFlags = getUserInput(); // malloc in gUI()
 
 		if (outputFlags->HELP) {
 			displayHelpMessage();
@@ -49,9 +49,9 @@ void run() {
 		} else {
 			displayBadInputMessage();
 		}
-	}
 
-	free(outputFlags);
+		free(outputFlags); // free after every usage to make sure it doesn't hang out when it shouldn't.
+	}
 }
 
 
