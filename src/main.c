@@ -30,18 +30,15 @@
 void run() {
 	displayIntroMessage();
 
-	// have some serious memory management questions re:outputFlagContainer…
-	outputFlagContainer *outputFlags;
+	outputFlagContainer *outputFlags = malloc(sizeof(outputFlagContainer));
 
 	while(true) {
 		displayPreGameMenu();
 
-		outputFlags = getUserInput(); // malloc in gUI()
-
+		outputFlags = getUserInput(outputFlags);
 		if (outputFlags->HELP) {
 			displayHelpMessage();
-		}
-		else if (outputFlags->YES || outputFlags->PLAY) {
+		} else if (outputFlags->YES || outputFlags->PLAY) {
 			gameloop();
 		} else if (outputFlags->QUIT || outputFlags->NO) {
 			displayQuitMessage();
@@ -49,9 +46,9 @@ void run() {
 		} else {
 			displayBadInputMessage();
 		}
-
-		free(outputFlags); // free after every usage to make sure it doesn't hang out when it shouldn't.
 	}
+
+	free(outputFlags);
 }
 
 

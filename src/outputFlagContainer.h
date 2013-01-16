@@ -17,8 +17,6 @@ typedef struct {
 
 	bool HELP;
 	bool QUIT;
-
-	// Required for pre-game:
 	bool YES;
 	bool NO;
 	bool PLAY;
@@ -27,7 +25,6 @@ typedef struct {
 } outputFlagContainer;
 
 outputFlagContainer* resetOutputFlags(outputFlagContainer* outputFlags) {
-	// free and malloc?
 	outputFlags->HELP = false;
 	outputFlags->QUIT = false;
 	outputFlags->YES = false;

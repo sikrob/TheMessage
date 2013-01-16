@@ -31,23 +31,21 @@
 #define MESSAGEPARSERPIECES_H
 
 
-outputFlagContainer* getUserInput() {
+outputFlagContainer *getUserInput(outputFlagContainer *outputFlags) {
+	outputFlags = resetOutputFlags(outputFlags);
+
 	char *userInput = NULL;
 	char user_input[MAX_INPUT];
 	char *userInputToken = NULL;
 	char *tmp = NULL;
 	char *finalCharacterCheck = NULL;
 
-	outputFlagContainer *outputFlags = malloc(sizeof(outputFlagContainer));
-	outputFlags = resetOutputFlags(outputFlags);
-
 	// Tokens to search for:
-	char HELP[] = "HELP";
-	char QUIT[] = "QUIT";
-
-	char YES[] = "YES";
-	char NO[] = "NO";
-	char PLAY[] = "PLAY";
+	char* HELP = "HELP";
+	char* QUIT = "QUIT";
+	char* YES = "YES";
+	char* NO = "NO";
+	char* PLAY = "PLAY";
 
 	userInput = fgets(user_input, MAX_INPUT-1, stdin);
 	int i = 0;
@@ -58,16 +56,17 @@ outputFlagContainer* getUserInput() {
 
 	userInputToken = strtok(userInput, " ");
 	if (userInputToken) {
-
 		// need to check for { \n . ' ! : , " ; }
 		// Should also make sure this happens on the final character only…
-		// Later.
-
 		finalCharacterCheck = strchr(userInputToken, '\n');
 		if (finalCharacterCheck) {
-			tmp = malloc(sizeof(char)*(strlen(userInputToken)-1));
+			tmp = malloc(sizeof(char)*(strlen(userInputToken))); // As tmp is one char less than userInputToken, this is correct.
+			if (tmp == NULL){
+				exit(1);
+			}
 			strncpy(tmp,userInputToken,strlen(userInputToken)-1);
-			userInputToken = tmp;
+			tmp[strlen(userInputToken)-1] = '\0';
+			strcpy(userInputToken, tmp);
 			free(tmp);
 			tmp = NULL;
 		}
@@ -90,15 +89,18 @@ outputFlagContainer* getUserInput() {
 		if (userInputToken) {
 			finalCharacterCheck = strchr(userInputToken, '\n');
 			if (finalCharacterCheck) {
-				tmp = malloc(sizeof(char)*(strlen(userInputToken)-1));
+				tmp = malloc(sizeof(char)*(strlen(userInputToken)));
+				if (tmp == NULL){
+					exit(1);
+				}
 				strncpy(tmp,userInputToken,strlen(userInputToken)-1);
-				userInputToken = tmp;
+				tmp[strlen(userInputToken)-1] = '\0';
+				strcpy(userInputToken, tmp);
 				free(tmp);
 				tmp = NULL;
 			}
 		}
 	}
-	// is there a way to make sure we delete the array?
 
 	return outputFlags;
 }
