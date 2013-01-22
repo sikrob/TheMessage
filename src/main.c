@@ -39,7 +39,7 @@ void run() {
 		if (outputFlags->HELP) {
 			displayHelpMessage();
 		} else if (outputFlags->YES || outputFlags->PLAY) {
-			gameloop();
+			gameloop(outputFlags);
 		} else if (outputFlags->QUIT || outputFlags->NO) {
 			displayQuitMessage();
 			break;

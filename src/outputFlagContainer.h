@@ -20,7 +20,13 @@ typedef struct {
 	bool YES;
 	bool NO;
 	bool PLAY;
-
+	bool GO;
+	bool BEDROOM;
+	bool HALLWAY;
+	bool KITCHEN;
+	bool NOTE;
+	bool GET;
+	bool DROP;
 
 } outputFlagContainer;
 
@@ -30,6 +36,13 @@ outputFlagContainer *resetOutputFlags(outputFlagContainer* outputFlags) {
 	outputFlags->YES = false;
 	outputFlags->NO = false;
 	outputFlags->PLAY = false;
+	outputFlags->GO = false;
+	outputFlags->BEDROOM = false;
+	outputFlags->HALLWAY = false;
+	outputFlags->KITCHEN = false;
+	outputFlags->NOTE = false;
+	outputFlags->GET = false;
+	outputFlags->DROP = false;
 
 	return outputFlags;
 }
