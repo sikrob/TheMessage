@@ -35,4 +35,20 @@ void displayPreGameMenu() {
 	puts("Would you like to play or quit? Please choose one.");
 }
 
+void playerInBedroom() {
+	puts("Player is in bedroom.");
+}
+
+void playerInBedroomNoteFall() {
+	puts("meow, a note falls down!");
+}
+
+void playerInHallway() {
+	puts("Player is in hallway.");
+}
+
+void playerInKitchen() {
+	puts("Player is in kitchen.");
+}
+
 #endif

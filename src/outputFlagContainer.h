@@ -24,7 +24,7 @@ typedef struct {
 
 } outputFlagContainer;
 
-outputFlagContainer* resetOutputFlags(outputFlagContainer* outputFlags) {
+outputFlagContainer *resetOutputFlags(outputFlagContainer* outputFlags) {
 	outputFlags->HELP = false;
 	outputFlags->QUIT = false;
 	outputFlags->YES = false;
