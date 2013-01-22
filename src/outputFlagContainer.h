@@ -27,10 +27,16 @@ typedef struct {
 	bool NOTE;
 	bool GET;
 	bool DROP;
+	bool BAT;
+	bool READ;
+	bool DOOR;
+	bool OPEN;
+	bool CLOSE;
 
 } outputFlagContainer;
 
 outputFlagContainer *resetOutputFlags(outputFlagContainer* outputFlags) {
+
 	outputFlags->HELP = false;
 	outputFlags->QUIT = false;
 	outputFlags->YES = false;
@@ -43,6 +49,11 @@ outputFlagContainer *resetOutputFlags(outputFlagContainer* outputFlags) {
 	outputFlags->NOTE = false;
 	outputFlags->GET = false;
 	outputFlags->DROP = false;
+	outputFlags->BAT = false;
+	outputFlags->READ = false;
+	outputFlags->DOOR = false;
+	outputFlags->OPEN = false;
+	outputFlags->CLOSE = false;
 
 	return outputFlags;
 }

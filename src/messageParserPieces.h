@@ -46,6 +46,18 @@ outputFlagContainer *getUserInput(outputFlagContainer *outputFlags) {
 	char* YES = "YES";
 	char* NO = "NO";
 	char* PLAY = "PLAY";
+	char* GO = "GO";
+	char* BEDROOM = "BEDROOM";
+	char* HALLWAY = "HALLWAY";
+	char* KITCHEN = "KITCHEN";
+	char* NOTE = "NOTE";
+	char* GET = "GET";
+	char* DROP = "DROP";
+	char* BAT = "BAT";
+	char* READ = "READ";
+	char* DOOR = "DOOR";
+	char* OPEN = "OPEN";
+	char* CLOSE = "CLOSE";
 
 	userInput = fgets(user_input, MAX_INPUT-1, stdin);
 	int i = 0;
@@ -83,6 +95,30 @@ outputFlagContainer *getUserInput(outputFlagContainer *outputFlags) {
 			outputFlags->PLAY = true;
 		} else if (0 == strcmp(userInputToken, NO)) {
 			outputFlags->NO = true;
+		} else if (0 == strcmp(userInputToken, GO)) {
+			outputFlags->GO = true;
+		} else if (0 == strcmp(userInputToken, BEDROOM)) {
+			outputFlags->BEDROOM = true;
+		} else if (0 == strcmp(userInputToken, HALLWAY)) {
+			outputFlags->HALLWAY = true;
+		} else if (0 == strcmp(userInputToken, KITCHEN)) {
+			outputFlags->KITCHEN = true;
+		} else if (0 == strcmp(userInputToken, NOTE)) {
+			outputFlags->NOTE = true;
+		} else if (0 == strcmp(userInputToken, GET)) {
+			outputFlags->GET = true;
+		} else if (0 == strcmp(userInputToken, DROP)) {
+			outputFlags->DROP = true;
+		} else if (0 == strcmp(userInputToken, BAT)) {
+			outputFlags->BAT = true;
+		} else if (0 == strcmp(userInputToken, READ)) {
+			outputFlags->READ = true;
+		} else if (0 == strcmp(userInputToken, DOOR)) {
+			outputFlags->DOOR = true;
+		} else if (0 == strcmp(userInputToken, OPEN)) {
+			outputFlags->OPEN = true;
+		} else if (0 == strcmp(userInputToken, CLOSE)) {
+			outputFlags->CLOSE = true;
 		}
 
 		userInputToken = strtok(NULL, " ");
