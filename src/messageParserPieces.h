@@ -58,7 +58,9 @@ outputFlagContainer *getUserInput(outputFlagContainer *outputFlags) {
 	char* DOOR = "DOOR";
 	char* OPEN = "OPEN";
 	char* CLOSE = "CLOSE";
+	char* USE = "USE";
 
+	printf(">");
 	userInput = fgets(user_input, MAX_INPUT-1, stdin);
 	int i = 0;
 	while(userInput[i]) {
@@ -119,6 +121,8 @@ outputFlagContainer *getUserInput(outputFlagContainer *outputFlags) {
 			outputFlags->OPEN = true;
 		} else if (0 == strcmp(userInputToken, CLOSE)) {
 			outputFlags->CLOSE = true;
+		} else if (0 == strcmp(userInputToken, USE)) {
+			outputFlags->USE = true;
 		}
 
 		userInputToken = strtok(NULL, " ");

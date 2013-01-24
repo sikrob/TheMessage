@@ -8,8 +8,12 @@
 #ifndef MESSAGES_H
 #define MESSAGES_H
 
-void displayIntroMessage() {
+
+void displayTitle() {
 	puts("\n---------------\n| THE MESSAGE |\n---------------");
+}
+
+void displayIntroMessage() {
 	puts("An interactive fiction game by Robert Sikorski.");
 	puts("This work is free, open source, and may only be used, redistributed, or modified on condition of the same");
 	puts("being true for the end result.");
@@ -19,26 +23,50 @@ void displayIntroMessage() {
 }
 
 void displayQuitMessage() {
-	puts("Thanks for playing The Message.");
+	puts("\nThanks for playing The Message.");
 }
 
 void displayBadInputMessage() {
-	puts("I'm sorry, I didn't recognize your input; please try again.");
+	puts("\nI'm sorry, I didn't recognize your input; please try again.");
 }
 
 void displayHelpMessage() {
-	puts("\nCommon commands in this game include: yes, no, play, quit, go [destination]");
-	puts("Tips: go [destination] could be something like \"go door\"\n");
+	puts("\nCommon commands in this game include:");
+	puts("help quit yes no play go get use");
+	puts("\"go\" has syntax for a destination: go [destination]");
+	puts("\"get\" has syntax for picking items up: get [item]");
+	puts("\"use\" has syntax for using items: use [item]");
+	puts("There are a couple of other commands which you may find, but this is enough to get by.");
 }
 
 void displayPreGameMenu() {
-	puts("Would you like to play or quit? Please choose one.");
+	puts("\nWould you like to play or quit? Please choose one.");
+}
+
+void displayBadGetUseInputMessage() {
+	puts("\nThat is either not something around you or not an interesting item.");
+}
+
+void playerInBedroomGotNote() {
+	puts("\nYou pick up the note.");
+}
+
+void playerInBedroomGotBat() {
+	puts("\nYou pick up the bat. It feels quite trusty.");
+}
+
+void playerInBedroomUseBat() {
+	puts("\nYou swing your bat around your bedroom and, in your gusto, break part of your dresser. Oops!");
+}
+
+void playerInHallwayUseBat() {
+	puts("\nYou use the bat on the menacing shadow and – crack! – you make contact with it in a surprise attack!");
 }
 
 void playerInBedroom() {
 	puts("\nYour bedroom is small but functional, with a dresser, closet, and bed. No small amount of clothing littered the");
-	puts("floor and there may have been some old food stuffed into a corner. Your door is open and some of the rooms mess");
-	puts("prevents it from closing anyway. A full length mirror is on one wall.");
+	puts("floor and there may have been some old food stuffed into a corner. The door to your room leads to a hallway and is");
+	puts("open; some of the room's mess prevents it from closing anyway. A full length mirror is on one wall.");
 }
 
 void playerInBedroomWakeUp() {
@@ -51,8 +79,12 @@ void playerInBedroomWakeUp() {
 	puts("years, you had lost a fair amount of faith that things were getting better.");
 }
 
-void playerInBedroomNoteFall() {
-	puts("\nYou notice from the corner of an eye a folded note falling down from your bed onto the floor.");
+void playerInBedroomNote() {
+	puts("\nYou noticed a folded note which fell down from your bed to the floor. It sits oddly neatly upon the room's mess.");
+}
+
+void playerInBedroomBat() {
+	puts("\nA trusty looking bat leans between your bed and dresser.");
 }
 
 void playerInHallway() {

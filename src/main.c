@@ -28,6 +28,7 @@
 #endif
 
 void run() {
+	displayTitle();
 	displayIntroMessage();
 
 	outputFlagContainer *outputFlags = malloc(sizeof(outputFlagContainer));

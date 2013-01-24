@@ -16,6 +16,8 @@ typedef struct {
 	bool inBedroom;
 	bool inHallway;
 	bool inKitchen;
+	bool hasNote;
+	bool hasBat;
 
 } playerStateContainer;
 
@@ -23,6 +25,8 @@ playerStateContainer *resetPlayerStateFlags(playerStateContainer *playerFlags) {
 	playerFlags->inBedroom = false;
 	playerFlags->inHallway = false;
 	playerFlags->inKitchen = false;
+	playerFlags->hasNote = false;
+	playerFlags->hasBat = false;
 
 	return playerFlags;
 }
