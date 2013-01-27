@@ -52,12 +52,9 @@ outputFlagContainer *getUserInput(outputFlagContainer *outputFlags) {
 	char* KITCHEN = "KITCHEN";
 	char* NOTE = "NOTE";
 	char* GET = "GET";
-	char* DROP = "DROP";
+//	char* DROP = "DROP";
 	char* BAT = "BAT";
 	char* READ = "READ";
-	char* DOOR = "DOOR";
-	char* OPEN = "OPEN";
-	char* CLOSE = "CLOSE";
 	char* USE = "USE";
 
 	printf(">");
@@ -109,18 +106,12 @@ outputFlagContainer *getUserInput(outputFlagContainer *outputFlags) {
 			outputFlags->NOTE = true;
 		} else if (0 == strcmp(userInputToken, GET)) {
 			outputFlags->GET = true;
-		} else if (0 == strcmp(userInputToken, DROP)) {
-			outputFlags->DROP = true;
+//		} else if (0 == strcmp(userInputToken, DROP)) {
+//			outputFlags->DROP = true;
 		} else if (0 == strcmp(userInputToken, BAT)) {
 			outputFlags->BAT = true;
 		} else if (0 == strcmp(userInputToken, READ)) {
 			outputFlags->READ = true;
-		} else if (0 == strcmp(userInputToken, DOOR)) {
-			outputFlags->DOOR = true;
-		} else if (0 == strcmp(userInputToken, OPEN)) {
-			outputFlags->OPEN = true;
-		} else if (0 == strcmp(userInputToken, CLOSE)) {
-			outputFlags->CLOSE = true;
 		} else if (0 == strcmp(userInputToken, USE)) {
 			outputFlags->USE = true;
 		}

@@ -18,6 +18,7 @@
 
 void gameloop(outputFlagContainer *outputFlags) {
 	playerStateContainer *playerFlags = malloc(sizeof(playerStateContainer));
+	playerFlags = resetPlayerStateFlags(playerFlags);
 
 	displayTitle();
 	// Always start waking up in bed with the note falling down.
@@ -57,24 +58,45 @@ void gameloop(outputFlagContainer *outputFlags) {
 					displayBadGetUseInputMessage();
 				}
 
-			} else {
+			} else if (outputFlags->READ) {
+				if (outputFlags->NOTE) {
+					if (playerFlags->hasNote) {
+						playerReadNote();
+					} else {
+						playerNotReadNote();
+					}
+				} else {
+					displayBadGetUseInputMessage();
+				}
+			}else {
 				displayBadInputMessage();
 			}
 
 		} else if (playerFlags->inHallway) {
+			if (playerFlags->hasActedInHallway) {
+				playerInHallwayTimeout();
+				winMessage();
+				endGameMessage();
+				break;
+			}
 			playerInHallway();
 			outputFlags = getUserInput(outputFlags);
+
 
 			if (outputFlags->GO && outputFlags->BEDROOM) {
 				playerFlags->inHallway = false;
 				playerFlags->inBedroom = true;
+				playerFlags->hasActedInHallway = true;
 			} else if (outputFlags->GO && outputFlags->KITCHEN) {
 				playerFlags->inHallway = false;
 				playerFlags->inKitchen = true;
-
+				playerFlags->hasActedInHallway = true; // should be unnecessary here 
 			} else if (outputFlags->USE) {
 				if (outputFlags->BAT && playerFlags->hasBat) {
 					playerInHallwayUseBat();
+					loseMessage();
+					endGameMessage();
+					break;
 				} else {
 					displayBadGetUseInputMessage();
 				}
@@ -85,15 +107,9 @@ void gameloop(outputFlagContainer *outputFlags) {
 
 		} else if (playerFlags->inKitchen) {
 			playerInKitchen();
-			outputFlags = getUserInput(outputFlags);
-
-			if (outputFlags->GO && outputFlags->HALLWAY) {
-				// can't leave the kitchen once you go in
-				// End game if attempt to leave (but not the bad ending.)
-			} else {
-				displayBadInputMessage();
-			}
-
+			winMessage();
+			endGameMessage();
+			break;
 		}
 
 	}

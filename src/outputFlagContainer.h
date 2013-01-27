@@ -26,12 +26,9 @@ typedef struct {
 	bool KITCHEN;
 	bool NOTE;
 	bool GET;
-	bool DROP;
+//	bool DROP;
 	bool BAT;
 	bool READ;
-	bool DOOR;
-	bool OPEN;
-	bool CLOSE;
 	bool USE;
 
 } outputFlagContainer;
@@ -49,12 +46,9 @@ outputFlagContainer *resetOutputFlags(outputFlagContainer* outputFlags) {
 	outputFlags->KITCHEN = false;
 	outputFlags->NOTE = false;
 	outputFlags->GET = false;
-	outputFlags->DROP = false;
+//	outputFlags->DROP = false;
 	outputFlags->BAT = false;
 	outputFlags->READ = false;
-	outputFlags->DOOR = false;
-	outputFlags->OPEN = false;
-	outputFlags->CLOSE = false;
 	outputFlags->USE = false;
 
 	return outputFlags;
