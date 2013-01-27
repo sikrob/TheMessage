@@ -15,7 +15,7 @@ Software implementation goals:
 * Simple parser and components for it, which may include:
   * Tokenizing input
   * Grammar identification (require word orders or be flexible?)
-* Inventory system
+* Inventory system (NOT IMPLEMENTED)
 * Not to require a map for the player (indicative of scope creep for such a simple project)
 
 -
