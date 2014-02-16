@@ -3,7 +3,7 @@
 
 A simple, short, interactive-fiction game written in C.
 
-This game is my first entry in [OneGameAMonth](onegameamonth.com)(1GAM). It's an easy task to 
+This game is my first entry in [OneGameAMonth](http://www.onegameamonth.com)(1GAM). It's an easy task to 
 complete that will get me some refreshing in C and git, both of which I've neglected
 for a year+ at the point of beginning this project (excluding use of C++ or Obj-C).
 
